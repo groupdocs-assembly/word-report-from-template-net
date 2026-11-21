@@ -1,9 +1,13 @@
-﻿# Word reports from a template, in C#
+﻿# Generate Word documents from templates in C#
 
 [![build](https://github.com/groupdocs-assembly/word-report-from-template-net/actions/workflows/build.yml/badge.svg)](https://github.com/groupdocs-assembly/word-report-from-template-net/actions/workflows/build.yml)
 [![NuGet](https://img.shields.io/nuget/v/GroupDocs.Assembly?label=GroupDocs.Assembly)](https://www.nuget.org/packages/GroupDocs.Assembly/)
 [![.NET](https://img.shields.io/badge/.NET-8.0%20%7C%2010.0-512bd4)](https://dotnet.microsoft.com/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
+**To generate a Word document from a template in C#, put `<<[...]>>` tags in a `.docx` and call
+`DocumentAssembler.AssembleDocument` with the template, an output path and your data.** No
+Microsoft Office on the server, and DOCX or PDF from the same call.
 
 The shortest honest answer to *"how do I generate a Word document from a template in C#?"* — three
 steps that build on each other: a .NET object, then a JSON file, then the same thing as PDF. No
@@ -114,6 +118,26 @@ Every call mirrors an example of the product's examples repository
   ([temporary licence](https://purchase.groupdocs.com/temporary-license)).
 * **Frameworks.** The sample targets .NET 8. The package also builds for .NET Framework 4.0 Client
   Profile, 4.6.2 and 4.8, .NET Standard 2.0, .NET 6 and .NET 10.
+
+## Common questions
+
+**What is the best way to generate Word documents from templates in C#?**
+Keep the layout in a `.docx` the content owners can edit, keep the data in code, and let a template
+engine join them. Hand-written Open XML ties the document's appearance to your source.
+
+**Is this mail merge?**
+It replaces it. Mail merge fills `MERGEFIELD` placeholders from one flat row. A template here also
+has `<<foreach>>`, `<<if>>`, expressions such as `Sum` and `GroupBy`, and nested objects — so a
+variable number of invoice lines is still a single template.
+
+**Do I need Microsoft Word on the server?**
+No, and it runs on Linux as well as Windows.
+
+**Can the data be JSON rather than an object?**
+Yes — `JsonDataSource` takes a file, stream or string, and the template is unchanged.
+
+**How do I get a PDF?**
+Add `new LoadSaveOptions(FileFormat.Pdf)` to the same call.
 
 ## Related samples
 

@@ -1,0 +1,11 @@
+bin/
+obj/
+.vs/
+.vscode/
+*.user
+*.suo
+output/
+out/
+TestResults/
+*.lic
+GroupDocs.Assembly.lic

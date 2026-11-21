@@ -1,0 +1,6 @@
+Order <<[order.Number]>> for <<[order.Customer]>>
+Placed on <<[order.Placed]:"dd MMMM yyyy">>
+
+<<foreach [line in order.Lines]>><<[line.Product]>> x<<[line.Quantity]>> - <<[line.Total]:"0.00">> EUR
+<</foreach>>
+Total: <<[order.Lines.Sum(l => l.Total)]:"0.00">> EUR
